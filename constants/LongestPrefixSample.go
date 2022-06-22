@@ -8,7 +8,7 @@ type TestSample struct {
 var SampleTest = []TestSample{
 	{
 		Input:    "abcdefghijk",
-		Expected: "abcdef",
+		Expected: "abcde",
 	},
 	{
 		Input:    "abc",

@@ -103,7 +103,9 @@ func (t Trie) LongestMatchedPrefix(word string) string {
 func CreateTrie() Trie {
 	wordsToInsert := make([]string, 0)
 	trie := InitTrie()
-	f, err := os.Open("../sample_prefixes.txt")
+	projectPath, _ := os.Getwd()
+	fmt.Printf(projectPath)
+	f, err := os.Open(fmt.Sprintf("%s/service/sample_prefixes.txt", projectPath))
 	if err != nil {
 		fmt.Println("error opening file ", err)
 		os.Exit(1)
@@ -124,13 +126,4 @@ func CreateTrie() Trie {
 		trie.insert(wordsToInsert[i])
 	}
 	return *trie
-}
-
-func main() {
-	wordsToFind := []string{"abcdefghijk", "4Vdw", "tim", "Xf", "XC8"}
-	trie := CreateTrie()
-	for i := 0; i < len(wordsToFind); i++ {
-		maximumPrefix := trie.LongestMatchedPrefix(wordsToFind[i])
-		fmt.Println(maximumPrefix)
-	}
 }
